@@ -1,0 +1,35 @@
+{
+  "name": "fe-test-milos",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@bitchcraft/keyconst": "^1.0.1",
+    "axios": "^0.18.0",
+    "date-fns": "^1.29.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-graceful-image": "^1.2.9",
+    "react-masonry-component": "^6.2.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "react-slick": "^0.23.1",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "slick-carousel": "^1.8.1",
+    "truncate": "^2.0.1",
+    "tutti-ch-styleguide": "^2.0.23"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "https://api.tutti.ch/v10",
+  "devDependencies": {
+    "enzyme": "^3.4.1",
+    "enzyme-adapter-react-16": "^1.2.0"
+  }
+}
