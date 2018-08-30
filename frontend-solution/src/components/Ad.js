@@ -28,9 +28,9 @@ export class Ad extends React.Component {
 
 	render() {
 		return (
-			<div style={styles.page}>
-				<Link to="/" style={styles.backWrapper}>
-					<strong style={styles.backText}>&laquo;</strong>
+			<div className="ad-page">
+				<Link to="/" className="back">
+					<strong className="back-text">&laquo;</strong>
 				</Link>
 
 				<AdDetails ad={this.props.ad} error={this.props.error} loading={this.props.loading} />
@@ -59,25 +59,3 @@ export default props => (
 		<ConnectedAd {...props} />
 	</Provider>
 );
-
-const styles = {
-	page: {
-		position: 'relative',
-		borderTop: '1px solid #33adea',
-	},
-	backWrapper: {
-		position: 'absolute',
-		left: 0,
-		top: 0,
-		width: '50px',
-		height: '50px',
-		display: 'block',
-		paddingTop: '5px',
-		backgroundColor: '#d9d9d9',
-		color: '#333',
-	},
-	backText: {
-		fontSize: '40px',
-		lineHeight: '50px',
-	},
-};

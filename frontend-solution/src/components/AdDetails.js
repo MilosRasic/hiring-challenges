@@ -38,20 +38,20 @@ export default function AdDetails(props) {
 
 		return (
 			<React.Fragment>
-				<div data-test="ad-details-header" style={styles.header}>
-					<h2 style={styles.left}>{Category ? <Category height={iconSize} width={iconSize} style={{verticalAlign: 'middle'}} /> : `${parentCategory} »`} <span>{props.ad.category_info.name}</span></h2>
-					<h3 style={styles.right}>{Canton ? <Canton height={iconSize} width={iconSize} style={{verticalAlign: 'middle'}} /> : props.ad.location_info.region_name}</h3>
-					<h1 style={styles.middle}>{props.ad.subject}</h1>
+				<div data-test="ad-details-header" className="ad-details-header">
+					<h2 className="ad-details-header-segment ad-details-header-left">{Category ? <Category height={iconSize} width={iconSize} className="vertical-align-middle" /> : `${parentCategory} »`} <span>{props.ad.category_info.name}</span></h2>
+					<h3 className="ad-details-header-segment ad-details-header-right">{Canton ? <Canton height={iconSize} width={iconSize} className="vertical-align-middle" /> : props.ad.location_info.region_name}</h3>
+					<h1 className="ad-details-header-segment ad-details-header-middle">{props.ad.subject}</h1>
 				</div>
-				<div style={styles.content}>
-					<p style={styles.body}>{props.ad.body}</p>
+				<div className="clear-both">
+					<p className="ad-details-body">{props.ad.body}</p>
 					{props.ad.image_names &&
 						<Slider settings={sliderSettings}>
-							{props.ad.image_names.map(image => <div style={styles.imageWrapper} key={`${image}-div`}><img style={styles.image} src={`https://c.tutti.ch/images/${image}`} key={image} alt={image} /></div>)}
+							{props.ad.image_names.map(image => <div className="ad-details-image-wrapper" key={`${image}-div`}><img className="ad-details-image" src={`https://c.tutti.ch/images/${image}`} key={image} alt={image} /></div>)}
 						</Slider>
 					}
 				</div>
-				<h3 style={{...styles.footer, backgroundColor: backgroundColors[props.ad.type]}}>{props.ad.price}</h3>
+				<h3 className={`ad-details-footer category-color-${props.ad.type}`}>{props.ad.price}</h3>
 			</React.Fragment>
 		);
 	}
@@ -66,67 +66,4 @@ AdDetails.propTypes = {
 	loading: PropTypes.bool,
 	error: PropTypes.string,
 	ad: PropTypes.object,
-};
-
-const styles = {
-	header: {
-		height: '50px',
-		paddingLeft: '50px',
-		paddingTop: '10px',
-		backgroundColor: '#d9d9d9',
-		color: '#333',
-	},
-	left: {
-		float: 'left',
-		marginTop: 0,
-		lineHeight: '50px',
-		paddingLeft: '20px',
-	},
-	right: {
-		float: 'right',
-		marginTop: 0,
-		lineHeight: '50px',
-		paddingRight: '20px',
-	},
-	middle: {
-		overflow: 'hidden',
-		marginTop: 0,
-		lineHeight: '50px',
-	},
-	body: {
-		textAlign: 'left',
-		padding: '0 20px',
-		whiteSpace: 'pre-wrap',
-		float: 'left',
-		width: '50%',
-	},
-	carousel: {
-		float: 'right',
-		//clear: 'both',
-	},
-	content: {
-		clear: 'both',
-	},
-	footer: {
-		height: '50px',
-		lineHeight: '50px',
-		//clear: 'both',
-		position: 'fixed',
-		bottom: 0,
-		left: 0,
-		right: 0,
-		marginBottom: 0,
-	},
-	imageWrapper: {
-		textAlign: 'center',
-	},
-	image: {
-		display: 'inline-block',
-	},
-};
-
-const backgroundColors = {
-	s: '#cceaf9',
-	u: '#a8da99',
-	K: '#a8da99',
 };

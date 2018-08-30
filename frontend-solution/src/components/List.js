@@ -36,7 +36,7 @@ export class List extends React.Component {
 					{this.props.ads && this.props.ads.map(ad => <ListItem ad={ad} key={ad.id} />)}
 				</Masonry>
 
-				{this.props.ads && !this.props.loading && this.props.nextPage && <span style={styles.loadMore} onClick={this.loadMore} data-test="load_more">Load more</span>}
+				{this.props.ads && !this.props.loading && this.props.nextPage && <div className="load-more" onClick={this.loadMore} data-test="load_more">Load more</div>}
 
 				{this.props.ads && this.props.loading && <Spinner size={0.5} />}
 			</React.Fragment>
@@ -63,9 +63,3 @@ export default props => (
 		<ConnectedList {...props} />
 	</Provider>
 );
-
-const styles = {
-	loadMore: {
-		cursor: 'pointer',
-	},
-};

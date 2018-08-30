@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Tutti Clone",
+  "name": "Web app built on top of Tutti mobile API",
   "icons": [
     {
       "src": "favicon.ico",
