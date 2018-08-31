@@ -128,7 +128,7 @@ Frontend tech choices:
 * create-react-app: fast and easy react app setup, especially if you want a PWA
 * axios: nice and easy to use XHR library with a reasonable API
 * date-fns: functional lightweight alternative to the heavyweight and mutation-rich moment. The disadvantage is lack of support for time zones and localization of date format.
-* prop-types: lightweight React component prop type checking at build time, for us who don't want strict types anywhere near our jabbascript
+* prop-types: lightweight React component prop type checking at runtime in dev environment, for us who don't want strict types anywhere near our jabbascript
 * react-graceful-image: React component that renders a placeholder while an image is loading and replaces it with the image once it's loaded. Makes our ad list items keep the same size and layout while the images are being loaded and prevents Masonry from having to reorder the items when loading is done.
 * react-masonry-component: React wrapper for Masonry, a library for smart ordering of list items with varying size.
 * react-slick: A React carousel component. Tried nuka-carousel first because we all love Formidable Labs but its layout styles turned out to not be context-proof.
