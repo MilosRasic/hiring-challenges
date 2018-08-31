@@ -4,7 +4,7 @@ import get from '../get';
 import actionTypes from '../constants/actionTypes';
 
 
-const baseUrl = '';
+const baseUrl = process.env.NODE_ENV === 'production' ? 'https://tutti.tiaservices.space/api' : '';
 
 function formatItem(item) {
 	return {

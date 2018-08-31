@@ -106,4 +106,44 @@ Tools used:
 
 ## The PWA
 
-**WIP**
+Brushing up the old Tutti homework to be a basic PWA wasn't too hard: re-enable the CRA's default service worker and edit manifest.json. I also decided to take some time to rewrite the old CSS in JS as CSS files and tweak the styles a little.
+
+Testing it was a problem though. Locally ran app doesn't register a service worker. Instead of hacking CRA's service worker, I decided to deploy the app to one of my linodes.
+
+Building and deploying was easy, but Tutti API doesn't provide CORS headers by defaults. I only later thought to check the website and saw that it could be made to support CORS, but my first idea was to proxy it with nginx. It's probably a good choice since the API seems to only allow CORS for tutti.ch. Some fumbling in the dark as is to be expected with me and nginx, and my final location block turned out to be:
+
+```
+    location ~ api/(.*) {
+      resolver 8.8.8.8;
+      proxy_pass https://api.tutti.ch/v10/$1$is_args$args;
+      proxy_set_header Host api.tutti.ch;
+      proxy_pass_request_headers on;
+    }
+```
+
+The app can be checked on https://tutti.tiaservices.space
+
+Frontend tech choices:
+
+* create-react-app: fast and easy react app setup, especially if you want a PWA
+* axios: nice and easy to use XHR library with a reasonable API
+* date-fns: functional lightweight alternative to the heavyweight and mutation-rich moment. The disadvantage is lack of support for time zones and localization of date format.
+* prop-types: lightweight React component prop type checking at build time, for us who don't want strict types anywhere near our jabbascript
+* react-graceful-image: React component that renders a placeholder while an image is loading and replaces it with the image once it's loaded. Makes our ad list items keep the same size and layout while the images are being loaded and prevents Masonry from having to reorder the items when loading is done.
+* react-masonry-component: React wrapper for Masonry, a library for smart ordering of list items with varying size.
+* react-slick: A React carousel component. Tried nuka-carousel first because we all love Formidable Labs but its layout styles turned out to not be context-proof.
+* redux-thunk: Easier to reason about than sagas. Doesn't introduce a new entity. More difficult to test.
+
+Other tools used:
+
+* Deployed to a VPS hosted on Linode
+* nginx used to serve the app and proxy the API
+* Lighthouse extension for Google Chrome used to validate the app as PWA
+
+Possible future improvements:
+
+* Address some of the issues reported by Lighthouse. Some are really easy to fix but we're running out of time.
+* Nicer design. I'm no designer but I can see too much white on white is bad.
+* Look into replacing the truncated description in list item with category and/or canton. Sadly I don't understand any of the languages Tutti supports so I can't tell how useful the title without the description is useful for a user.
+* Add aria attributes and roles if needed
+* Rewrite float-based CSS to use flex
